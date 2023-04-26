@@ -28,8 +28,6 @@ def lights(size):
 def electronics(size, lights):
     return render_template(
                             'electronics.html',
-                            #Задание №3. Укажи переменную с маршрутом до картинки battery.svg
-                            
                             size = size, 
                             lights = lights                           
                            )
