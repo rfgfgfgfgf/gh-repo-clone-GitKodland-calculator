@@ -1,45 +1,45 @@
 #Импорт
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
-#Результаты формы
-@app.route('/', methods=['GET','POST'])
+def result_calculate(size, lights, device):
+    #Переменные для энергозатратности приборов
+    home_coef = 100
+    light_coef = 0.04
+    devices_coef = 5   
+    return size * home_coef + lights * light_coef + device * devices_coef 
+
+#Первая страница
+@app.route('/')
 def index():
-    if request.method == 'POST':
-        # получаем выбранное изображение
-        selected_image = request.form.get('image-selector')
+    return render_template('index.html')
 
-        # Задание №2.Получаем текст
-        
+#Вторая страница
+@app.route('/<size>')
+def lights(size):
+    return render_template(
+                            'lights.html', 
+                            size=size
+                           )
 
-        # Задание №3. Получаем расположение текста
-       
+#Третья страница
+@app.route('/<size>/<lights>')
+def electronics(size, lights):
+    return render_template(
+                            'electronics.html',
+                            size = size, 
+                            lights = lights                           
+                           )
 
-        # Задание №3. Получаем цвет текста
-        
-
-        return render_template('index.html', 
-                               # отображаем выбранное изображение
-                               selected_image=selected_image, 
-
-                               # Задание №2. Отображаем текст
-                               
-
-                               # Задание №3. Отображаем цвет 
-                               
-                               
-                               #Задание №3. Отоброжаем расположение текста
-
-                               )
-    else:
-        # отображаем первое изображение по умолчанию
-        return render_template('index.html', selected_image='logo.svg')
-
-
-@app.route('/static/img/<path:path>')
-def serve_images(path):
-    return send_from_directory('static/img', path)
-
+#Расчет
+@app.route('/<size>/<lights>/<device>')
+def end(size, lights, device):
+    return render_template('end.html', 
+                            result=result_calculate(int(size),
+                                                    int(lights), 
+                                                    int(device)
+                                                    )
+                        )
 app.run(debug=True)
