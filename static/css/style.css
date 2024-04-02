@@ -109,6 +109,7 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 50px;
+    
 }
 
 
@@ -133,6 +134,11 @@ main {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+    color: #272727;
+    background-color: #e512e5;
+    font: bold;
+    font-style:inherit;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .user-info {
@@ -140,11 +146,23 @@ main {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    color: #272727;
+    background-color: #e512e5;
+    font: bold;
+    font-size: larger;
+    font-style:inherit;
+    font-family: 'Times New Roman', Times, serif;
+
 }
 
 label {
     display:inline-block ;
     margin-bottom: 10px;
+    color: #272727;
+    background-color: #e512e5;
+    font: bold;
+    font-style:inherit;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .address-date {
@@ -152,6 +170,9 @@ label {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    color: #272727;
+    background-color: #e512e5;
+    font: bold;
 }
 
 .delivery {
